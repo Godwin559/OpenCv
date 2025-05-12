@@ -1,0 +1,23 @@
+IMAGE_SIZE = (224, 224) 
+
+ BATCH_SIZE = 32 
+
+train_datagen = ImageDataGenerator(rescale=1./255, rotation_range=20, zoom_range=0.15, 
+
+width_shift_range=0.2, height_shift_range=0.2, shear_range=0.15, horizontal_flip=True, 
+
+fill_mode="nearest") 
+
+val_test_datagen = ImageDataGenerator(rescale=1./255) train_generator = 
+
+train_datagen.flow_from_directory( 'dataset/train', target_size=IMAGE_SIZE, 
+
+batch_size=BATCH_SIZE, class_mode='binary' ) 
+
+ val_generator = val_test_datagen.flow_from_directory( 'dataset/val', 
+
+target_size=IMAGE_SIZE, batch_size=BATCH_SIZE, class_mode='binary' ) 
+
+ test_generator = val_test_datagen.flow_from_directory( 'dataset/test', 
+
+target_size=IMAGE_SIZE, batch_size=BATCH_SIZE, class_mode='binary', shuffle=False )
