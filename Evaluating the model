@@ -1,0 +1,17 @@
+oss, accuracy = model.evaluate(test_generator) 
+
+ print(f'Test accuracy: {accuracy:.2f}') 
+
+ y_pred = model.predict(test_generator) 
+
+ y_pred_classes = (y_pred > 0.5).astype("int32").flatten() 
+
+y_true = test_generator.classes 
+
+print("Classification Report:") 
+
+ print(classification_report(y_true, y_pred_classes, target_names=['Non-Weapon', 'Weapon'])) 
+
+print("Confusion Matrix:") 
+
+ print(confusion_matrix(y_true, y_pred_classes))
